@@ -6,175 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SruthiSugumaran_COIS2020_Assignment01
+namespace Datastructures
 {
-    public class Term: IComparable
-    {
-        //Data members and their corresponding properties
-        private double coefficient;
-        private int exponent;
-
-        public double Coefficient
-        {
-            get { return coefficient; }
-            set { coefficient = value; }
-        }
-
-        public int Exponent
-        {
-            get { return exponent; }
-            set {
-                if (value < 0 || value > 99)
-                    throw new ArgumentOutOfRangeException("Exponent must be between 0 and 99"); 
-                else
-                    exponent = value; 
-            }
-        }
-
-        //Creates a term with the given coefficient and exponent
-        public Term(double coefficient, int exponent)
-        {
-            this.Coefficient = coefficient;
-            this.Exponent = exponent;
-        }
-
-        //Evaluates the current term at x
-        public double Evaluate(double x)
-        {
-            double value = 0;
-            value = this.Coefficient * Math.Pow(x, this.Exponent);
-            return value;
-        }
-
-        //Returns -1,0, or 1 if the exponent of the current term 
-        //is less than, equal to, or greater than the exponent of obj
-        public int CompareTo(object obj)
-        {
-            if (obj is Term)
-            {
-                Term newObj = (Term)obj;
-                if (this.Exponent < newObj.Exponent)
-                    return -1;
-                else if (this.Exponent > newObj.Exponent)
-                    return 1;
-                else
-                    return 0;
-            }
-            else
-            {
-                throw new ArgumentException("Enter a valid term");
-            }
-        }
-
-        //Returns a string representation of the current term
-        public override string ToString()
-        {
-            return this.Coefficient.ToString() + $"(x^{this.Exponent})";
-        }
-    }
-
-    public class Node<T>
-    {
-        public T Item { get; set; }
-        public Node<T> Next { get; set; }
-
-        public Node(T item, Node<T> next)
-        {
-            this.Item = item;
-            this.Next = next;
-        }
-    }
-
-    public class Polynomial
-    {
-        //A reference to the first node of a singly linked list
-        private Node<Term> front;
-
-        //Creates the polynomial 0
-        public Polynomial()
-        {
-            this.front = null;
-        }
-        
-        //Inserts term t into the current polynomial in its proper order
-        //If a term with the same exponent already exists then the two terms are added together
-        public void AddTerm(Term t)
-        {
-            Node<Term> toAdd = new Node<Term>(t, null);
-            Node<Term> current = this.front;
-            if(front == null)
-            {
-                this.front = toAdd;
-            }
-            else if(front.Item.Exponent < toAdd.Item.Exponent)
-            {
-                toAdd.Next = front;
-                this.front = toAdd;
-            }
-            else
-            {
-                int flag = 0;
-
-                while (current != null)
-                {
-                    if (current.Next == null)
-                        break;
-
-                    if(current.Item.Exponent == toAdd.Item.Exponent)
-                    {
-                        current.Item.Coefficient += toAdd.Item.Coefficient;
-                        flag = 1;
-                        break;
-                    }
-
-                    if(current.Next.Item.Exponent < toAdd.Item.Exponent)
-                    {
-                        toAdd.Next = current.Next;
-                        current.Next = toAdd;
-                        break;
-                    }
-
-                    current = current.Next;
-                }
-
-                if(flag == 0)
-                    current.Next = toAdd;
-            }
-            //Note to Sruthi: Implement linked list tranversal
-        }
-
-        //Adds polynomials p and q to yield a new polynomial
-        public static Polynomial operator + (Polynomial p, Polynomial q)
-        {
-            return null;
-        }
-
-        //Multiplies polynomials p and q to yield a new polynomial
-        public static Polynomial operator * (Polynomial p, Polynomial q)
-        {
-            return null;
-        }
-
-        //Evaluates the current polynomial at x
-        public double Evaluate(double x)
-        {
-            return 0;
-        }
-
-        //Prints the current polynomial
-        public void Print()
-        {
-            Node<Term> current = this.front;
-            while(current!=null)
-            {
-                Console.Write(current.Item);
-                if (current.Next != null)
-                    Console.Write(" + ");
-                current = current.Next;
-            }
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -193,19 +26,22 @@ namespace SruthiSugumaran_COIS2020_Assignment01
             Console.WriteLine($"Evaluate: x=4\t {term1.Evaluate(x)}");
 
             Console.WriteLine($"Compare: {term2.ToString()}\t {term1.CompareTo(term2)}");
-            
+            //------------------------------------------------------------------------------
             
 
+
             //Checking polynomial list
+            //------------------------------------------------------------------------------
+            //Checking adding term and printing
             Console.WriteLine("\n\nChecking polynomial list");
-            Polynomial p1 = new Polynomial();
+            DatastructuresLinkedList.Polynomial p1 = new DatastructuresLinkedList.Polynomial();
 
             Console.WriteLine("\nAdding term1: 2(x^3)");
             p1.AddTerm(term1);
             Console.Write("Result:");
             p1.Print();
 
-            Console.WriteLine("\n\nAdding term2: 4(x^3)");
+            Console.WriteLine("\n\nAdding term2: 4(x^5)");
             p1.AddTerm(term2);
             Console.Write("Result:");
             p1.Print();
@@ -230,7 +66,96 @@ namespace SruthiSugumaran_COIS2020_Assignment01
             Console.Write("Result:");
             p1.Print();
 
+            Console.WriteLine($"\n\nAdding term2 again: 3(x^2)");
+            p1.AddTerm(term3);
+            Console.Write("Result:");
+            p1.Print();
+
             Console.WriteLine("");
+
+            //Checking adding two polynomials
+
+            
+            Console.WriteLine("\n\nChecking 2 polynomial addition");
+            DatastructuresLinkedList.Polynomial p2 = new DatastructuresLinkedList.Polynomial();
+
+            Term term5 = new Term(6, 4);
+            Term term6 = new Term(8, 2);
+
+            Console.WriteLine($"\nAdding term1: {term5}");
+            p2.AddTerm(term5);
+            Console.Write("Result:");
+            p2.Print();
+
+            Console.WriteLine($"\n\nAdding term2: {term6}");
+            p2.AddTerm(term6);
+            Console.Write("Result:");
+            p2.Print();
+
+            Console.WriteLine($"\n\nAdding term2: {term6}");
+            p2.AddTerm(term6);
+            Console.Write("Result:");
+            p2.Print();
+
+            Console.Write($"\np1 + p2 = ");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.WriteLine("\np1: ");
+            p1.Print();
+            Console.WriteLine("\np2: ");
+            p2.Print();
+            Console.WriteLine("\nAddition Result: ");
+            DatastructuresLinkedList.Polynomial p3 = (p1 + p2);
+            p3.Print();
+            Console.WriteLine();
+
+            //Checking multiplying two polynomials
+
+            Console.WriteLine("\n\nChecking 2 polynomial addition");
+
+            Console.Write($"\np1 * p2 = ");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.WriteLine("\np1: ");
+            p1.Print();
+            Console.WriteLine("\np2: ");
+            p2.Print();
+            Console.WriteLine("\nMultiplication Result: ");
+            DatastructuresLinkedList.Polynomial p1p2 = (p1 * p2);
+            p1p2.Print();
+            Console.WriteLine();
+
+            //Evaluate polynomials
+
+            Console.WriteLine("\n\nChecking evaluate polynomial");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.Write("\nx = 0, p1 = ");
+            p1.Print();
+            Console.WriteLine($"\n{p1.Evaluate(0)}\n");
+
+            Console.Write("\nx = 0, p2 = ");
+            p2.Print();
+            Console.WriteLine($"\n{p2.Evaluate(0)}\n");
+
+            Console.Write("\nx = 1, p1 = ");
+            p1.Print();
+            Console.WriteLine($"\n{p1.Evaluate(1)}\n");
+
+            Console.Write("\nx = 1, p2 = ");
+            p2.Print();
+            Console.WriteLine($"\n{p2.Evaluate(1)}\n");
+
+            Console.Write("\nx = 2, p1 = ");
+            p1.Print();
+            Console.WriteLine($"\n{p1.Evaluate(2)}\n");
+
+            Console.Write("\nx = 2, p2 = ");
+            p2.Print();
+            Console.WriteLine($"\n{p2.Evaluate(2)}\n");
+
+            Console.WriteLine();
+
         }
     }
 }
