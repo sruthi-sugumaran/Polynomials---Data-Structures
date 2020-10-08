@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatastructuresLinearArray;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -155,7 +156,13 @@ namespace Datastructures
             Console.WriteLine($"\n{p2.Evaluate(2)}\n");
 
             Console.WriteLine();
+            Console.Clear();
 
+            //END OF WORK BY SRUTHI
+
+            Console.WriteLine("Work by Shushmita below:");
+
+            Polynomial p5;
         }
     }
 }
