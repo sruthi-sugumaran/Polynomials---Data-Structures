@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using DatastructuresPolynomials;
 
 
 namespace Datastructures
@@ -163,6 +164,31 @@ namespace Datastructures
             Console.WriteLine("Work by Shushmita below:");
 
             Polynomial p5;
+
+
+            //Farhad's Tests
+            Console.WriteLine("Test of Polynomials below:");
+            //create an empty polynomials
+            Polynomials S = new Polynomials();
+
+            Console.WriteLine("Insert Polyomials p1, p2 and p3 in polynomials list");
+            S.Insert(p1);
+            S.Insert(p2);
+            S.Insert(p3);
+            //List of polynomials in S are
+            S.Print();
+            Console.WriteLine(S.Size());
+            Console.WriteLine("Retrieve the polynomial from index 1 from polynomials");
+            //Retrieve and print polynomial by index
+            S.Retrieve(1).Print();
+            Console.WriteLine("\nRemove the polynomial from index 0 from polynomials");
+            //remove from the list by position
+            S.Delete(0);
+            S.Print();
+
+            //The size of polynomials
+            Console.WriteLine(S.Size());
+
         }
     }
 }
