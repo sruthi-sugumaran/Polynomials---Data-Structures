@@ -1,4 +1,4 @@
-﻿using DatastructuresLinearArray;
+using DatastructuresLinearArray;
 using System;
 using System.Collections.Generic;
 using System.Linq;
