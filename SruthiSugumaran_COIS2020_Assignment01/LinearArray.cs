@@ -29,51 +29,52 @@ namespace DatastructuresLinearArray
                 P[0] = t;
                 count++;
             }
+
             else
             {
-                for(int i=0; i < P.Length; i++)
+                int indx=count-1;
+                Boolean bigger = false;
+                Boolean equal=false;
+                Boolean addedLast=false;
+                for (int i = 0; i <count; i++)
                 {
-                    if (P[i].Exponent == t.Exponent)
+                    if ( t.Exponent> P[i].Exponent)
                     {
-                        P[i].Coefficient += t.Coefficient;
+                        bigger = true;
+                        indx = i;
                         break;
                     }
-                    if (t.Exponent > P[i].Exponent)
+                    if(t.Exponent == P[i].Exponent)
                     {
-                        for (int j = this.count; j > i; j--)
-                            P[j] = P[j - 1];
-                        P[i] = t;
-                        count++;
+                        equal = true;
+                        indx = i;
                         break;
                     }
-                    else
+                    if(!equal &&!bigger && i==count-1)
                     {
-                        int k = i;
-                        while (P[k].Exponent > t.Exponent)
-                        {
-                            if (k >= count - 1)
-                                break;
-                            k++;
-
-
-                        }    
-
-                            
-                        if (P[k].Exponent == t.Exponent)
-                        {
-                            P[k].Coefficient += t.Coefficient;
-                            break;
-                        }
-                        else
-                        {
-                            //do the shifting
-                            P[k+1] = t;
-                            count++;
-                            break;
-                        }
-
+                        addedLast = true;
+                        indx = i;
+                        break;
                     }
                 }
+                if (equal)
+                {
+                    P[indx].Coefficient += t.Coefficient;
+                }
+                else if (bigger)
+                {
+                    int j;
+                    for (j = this.count; j >indx; j--)
+                        P[j] = P[j - 1];
+                    P[j] = t;
+                    count++;
+                }
+                else if(addedLast)
+                {
+                    P[count] = t;
+                    count++;
+                }
+
             }
         }
 

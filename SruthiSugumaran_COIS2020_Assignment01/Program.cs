@@ -196,6 +196,9 @@ namespace Datastructures
             arrP.AddTerm(term1);
             arrP.AddTerm(term2);
             arrP.AddTerm(term3);
+            arrP.AddTerm(term4);
+            arrP.AddTerm(term4);
+            Console.WriteLine(term4.ToString());
             arrP.Print();
         }
     }
