@@ -189,6 +189,14 @@ namespace Datastructures
             //The size of polynomials
             Console.WriteLine(S.Size());
 
+
+            //check array implemention of polynomial
+            Console.WriteLine("-----------Array implementation of Polynomial------------");
+            DatastructuresLinearArray.Polynomial arrP = new DatastructuresLinearArray.Polynomial();
+            arrP.AddTerm(term1);
+            arrP.AddTerm(term2);
+            arrP.AddTerm(term3);
+            arrP.Print();
         }
     }
 }
