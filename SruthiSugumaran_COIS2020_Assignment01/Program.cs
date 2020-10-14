@@ -163,8 +163,6 @@ namespace Datastructures
 
             Console.WriteLine("Work by Shushmita below:");
 
-            Polynomial p5;
-
 
             //Farhad's Tests
             Console.WriteLine("Test of Polynomials below:");
@@ -191,15 +189,141 @@ namespace Datastructures
 
 
             //check array implemention of polynomial
-            Console.WriteLine("-----------Array implementation of Polynomial------------");
-            DatastructuresLinearArray.Polynomial arrP = new DatastructuresLinearArray.Polynomial();
-            arrP.AddTerm(term1);
-            arrP.AddTerm(term2);
-            arrP.AddTerm(term3);
-            arrP.AddTerm(term4);
-            arrP.AddTerm(term4);
-            Console.WriteLine(term4.ToString());
-            arrP.Print();
+            //Console.WriteLine("-----------Array implementation of Polynomial------------");
+
+            //DatastructuresLinearArray.Polynomial arrP = new DatastructuresLinearArray.Polynomial();
+            //arrP.AddTerm(term1);
+            //arrP.AddTerm(term2);
+            //arrP.AddTerm(term3);
+            //arrP.AddTerm(term4);
+            //arrP.AddTerm(term4);
+            //Console.WriteLine(term4.ToString());
+            //arrP.Print();
+
+            //Checking polynomial array
+            //------------------------------------------------------------------------------
+            //Checking adding term and printing
+            Console.WriteLine("\n-------------------------------------------");
+            Console.WriteLine("\n-------------------------------------------");
+            Console.WriteLine("\n\nChecking polynomial array");
+            DatastructuresLinearArray.Polynomial arrayPolynomial1 = new DatastructuresLinearArray.Polynomial();
+
+            Console.WriteLine($"\nAdding term1: {term1}");
+            arrayPolynomial1.AddTerm(term1);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term2: {term2}");
+            arrayPolynomial1.AddTerm(term2);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term3: {term3.ToString()}");
+            arrayPolynomial1.AddTerm(term3);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term4: {term4.ToString()}");
+            arrayPolynomial1.AddTerm(term4);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term4 again: {term4.ToString()}");
+            arrayPolynomial1.AddTerm(term4);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term2 again: {term2.ToString()}");
+            arrayPolynomial1.AddTerm(term2);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine($"\n\nAdding term2 again: {term2}");
+            arrayPolynomial1.AddTerm(term3);
+            Console.Write("Result:");
+            arrayPolynomial1.Print();
+
+            Console.WriteLine("");
+
+            //Checking adding two polynomials
+
+
+            Console.WriteLine("\n\nChecking 2 polynomial addition");
+            DatastructuresLinearArray.Polynomial arrayPolynomial2 = new DatastructuresLinearArray.Polynomial();
+
+            Console.WriteLine($"\nAdding term1: {term5}");
+            arrayPolynomial2.AddTerm(term5);
+            Console.Write("Result:");
+            arrayPolynomial2.Print();
+
+            Console.WriteLine($"\n\nAdding term2: {term6}");
+            arrayPolynomial2.AddTerm(term6);
+            Console.Write("Result:");
+            arrayPolynomial2.Print();
+
+            Console.WriteLine($"\n\nAdding term2: {term6}");
+            arrayPolynomial2.AddTerm(term6);
+            Console.Write("Result:");
+            arrayPolynomial2.Print();
+
+            Console.Write($"\narrayPolynomial1 + arrayPolynomial2 = ");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.WriteLine("\narrayPolynomial1: ");
+            arrayPolynomial1.Print();
+            Console.WriteLine("\narrayPolynomial2: ");
+            arrayPolynomial2.Print();
+            Console.WriteLine("\nAddition Result: ");
+            DatastructuresLinearArray.Polynomial arrayPolynomialSum = (arrayPolynomial1 + arrayPolynomial2);
+            arrayPolynomialSum.Print();
+            Console.WriteLine();
+
+            //Checking multiplying two polynomials
+
+            Console.WriteLine("\n\nChecking 2 polynomial multiplication");
+
+            Console.Write($"\narrayPolynomial1 * arrayPolynomial2 = ");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.WriteLine("\narrayPolynomial1: ");
+            arrayPolynomial1.Print();
+            Console.WriteLine("\narrayPolynomial2: ");
+            arrayPolynomial2.Print();
+            Console.WriteLine("\nMultiplication Result: ");
+            DatastructuresLinearArray.Polynomial arrayPolynomialProduct = (arrayPolynomial1 * arrayPolynomial2);
+            arrayPolynomialProduct.Print();
+            Console.WriteLine();
+
+            //Evaluate polynomials
+
+            Console.WriteLine("\n\nChecking evaluate polynomial");
+            Console.WriteLine("\n---------------------\n\n");
+
+            Console.Write("\nx = 0, arrayPolynomial1 = ");
+            arrayPolynomial1.Print();
+            Console.WriteLine($"\n{arrayPolynomial1.Evaluate(0)}\n");
+
+            Console.Write("\nx = 0, arrayPolynomial2 = ");
+            arrayPolynomial2.Print();
+            Console.WriteLine($"\n{arrayPolynomial2.Evaluate(0)}\n");
+
+            Console.Write("\nx = 1, arrayPolynomial1 = ");
+            arrayPolynomial1.Print();
+            Console.WriteLine($"\n{arrayPolynomial1.Evaluate(1)}\n");
+
+            Console.Write("\nx = 1, arrayPolynomial2 = ");
+            arrayPolynomial2.Print();
+            Console.WriteLine($"\n{arrayPolynomial2.Evaluate(1)}\n");
+
+            Console.Write("\nx = 2, arrayPolynomial1 = ");
+            arrayPolynomial1.Print();
+            Console.WriteLine($"\n{arrayPolynomial1.Evaluate(2)}\n");
+
+            Console.Write("\nx = 2, arrayPolynomial2 = ");
+            arrayPolynomial2.Print();
+            Console.WriteLine($"\n{arrayPolynomial2.Evaluate(2)}\n");
+
+            
         }
     }
 }

@@ -21,6 +21,7 @@ namespace DatastructuresLinearArray
             P = new Term[100];
             this.count = 0;
         }
+
         //Adding a new term to the polynomial
         public void AddTerm(Term t)
         {
@@ -78,6 +79,51 @@ namespace DatastructuresLinearArray
             }
         }
 
+        //Adds polynomials p and q to yield a new polynomial
+        public static Polynomial operator + (Polynomial p, Polynomial q)
+        {
+            Polynomial result = new Polynomial();
+
+            for (int i = 0; i < p.count; i++)
+                result.AddTerm(new Datastructures.Term(p.P[i].Coefficient, p.P[i].Exponent));
+            for (int i = 0; i < q.count; i++)
+                result.AddTerm(new Datastructures.Term(q.P[i].Coefficient, q.P[i].Exponent));
+            
+            return result;
+        }
+
+
+        //Multiplies polynomial p and q to yield a new polynomial
+        public static Polynomial operator * (Polynomial p, Polynomial q)
+        {
+            Polynomial result = new Polynomial();
+
+            for(int i = 0; i < p.count; i++)
+            {
+                for(int j = 0; j < q.count; j++)
+                {
+                    result.AddTerm(new Term(p.P[i].Coefficient * q.P[j].Coefficient,
+                        p.P[i].Exponent + q.P[j].Exponent));
+                }
+            }
+
+            return result;
+        }
+
+        //Evaluates the current polynomial at x
+        public double Evaluate(double x)
+        {
+            double value = 0;
+
+            for(int i = 0; i < this.count; i++)
+            {
+                value += this.P[i].Evaluate(x);
+            }
+
+            return value;
+        }
+
+        //Prints the current polynomial
         public void Print()
         {
             for(int i=0;i<this.count;i++)
@@ -89,11 +135,6 @@ namespace DatastructuresLinearArray
 
             }
         }
-
-        //Adding two polynomial
-        //Multipliying two polynomial
-        //Evaluating two polynomial
-        //Print the polynomial
 
     }
 }
