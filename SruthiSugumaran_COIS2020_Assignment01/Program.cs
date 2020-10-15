@@ -11,7 +11,7 @@ using System.Threading;
 //----------------------------
 //Sruthi Sugumaran - 0690271
 //Shushmitha Das - 0607436
-//Farhad
+//Md Farhad Hossain - 0715954
 
 namespace Datastructures
 {
