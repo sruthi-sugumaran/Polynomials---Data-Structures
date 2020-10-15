@@ -10,7 +10,11 @@ namespace DatastructuresLinkedList
     public class Polynomial
     {
         //A reference to the first node of a singly linked list
-        public Datastructures.Node<Datastructures.Term> front;
+        private Datastructures.Node<Datastructures.Term> front;
+        public Datastructures.Node<Datastructures.Term> Front
+        {
+            get { return this.front; }
+        }
 
         //Creates the polynomial 0
         public Polynomial()
@@ -66,12 +70,17 @@ namespace DatastructuresLinkedList
         }
 
         //Adds polynomials p and q to yield a new polynomial
-        public static Polynomial operator +(Polynomial p, Polynomial q)
+        public static Polynomial operator + (Polynomial p, Polynomial q)
         {
             Polynomial result = new Polynomial();
 
             Datastructures.Node<Datastructures.Term> currentP = p.front;
             Datastructures.Node<Datastructures.Term> currentQ = q.front;
+
+            if (p.front == null || q.front == null)
+            {
+                throw new ArgumentException("Please enter non-null polynomials");
+            }
 
             while (currentP != null)
             {
@@ -94,6 +103,11 @@ namespace DatastructuresLinkedList
             Datastructures.Node<Datastructures.Term> currentP = p.front;
             Datastructures.Node<Datastructures.Term> currentQ = q.front;
 
+            if (p.front == null || q.front == null)
+            {
+                throw new ArgumentException("Please enter non-null polynomials");
+            }
+
             while (currentP != null)
             {
                 while (currentQ != null)
@@ -115,6 +129,11 @@ namespace DatastructuresLinkedList
             Datastructures.Node<Datastructures.Term> current = this.front;
             double value = 0;
 
+            if (this.front == null)
+            {
+                throw new InvalidOperationException("Please enter non-null polynomials");
+            }
+
             while (current != null)
             {
                 value += current.Item.Evaluate(x);
@@ -135,6 +154,11 @@ namespace DatastructuresLinkedList
                     Console.Write(" + ");
 
                 current = current.Next;
+            }
+
+            if(this.front==null)
+            {
+                Console.Write("null");
             }
         }
     }

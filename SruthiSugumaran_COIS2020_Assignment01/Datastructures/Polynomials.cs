@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatastructuresLinkedList;
+
 namespace DatastructuresPolynomials
 {
     public class Polynomials
@@ -17,7 +18,10 @@ namespace DatastructuresPolynomials
 
         public void Insert(Polynomial p)
         {
-            L.Add(p);
+            if (p.Front == null)
+                throw new ArgumentException("Please insert a non empty polynomial...");
+            else
+                L.Add(p);
         }
 
         // Retrieves the polynomial stored at position i in L
@@ -27,7 +31,7 @@ namespace DatastructuresPolynomials
             {
                 if (j == i)
                 {
-                    return L[j];
+                    return L[i];
                 }
                 
 
@@ -38,6 +42,10 @@ namespace DatastructuresPolynomials
 
         public void Delete(int i)
         {
+            if(i >= L.Count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             for (int j = 0; j < L.Count; j++)
             {
                 if (j == i)
@@ -57,11 +65,19 @@ namespace DatastructuresPolynomials
 
         public void Print()
         {
-            foreach (Polynomial p in L)
+            if(L.Count == 0)
             {
-                p.Print();
-                Console.WriteLine();
+                Console.Write("null");
             }
+            else
+            {
+                foreach (Polynomial p in L)
+                {
+                    p.Print();
+                    Console.WriteLine();
+                }
+            }
+            
 
         }
     }

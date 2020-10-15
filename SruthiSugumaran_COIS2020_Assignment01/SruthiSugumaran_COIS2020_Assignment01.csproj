@@ -43,17 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LinearArray.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="LinkedList.cs" />
+    <Compile Include="Datastructures\LinearArray.cs" />
+    <Compile Include="Test\LinearArrayTest.cs" />
+    <Compile Include="Datastructures\Node.cs" />
+    <Compile Include="Datastructures\LinkedList.cs" />
+    <Compile Include="Test\PolynomialsTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Term.cs" />
-    <Compile Include="Test.cs" />
-    <Compile Include="Polynomials.cs" />
+    <Compile Include="Datastructures\Term.cs" />
+    <Compile Include="Test\LinkedListTest.cs" />
+    <Compile Include="Datastructures\Polynomials.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

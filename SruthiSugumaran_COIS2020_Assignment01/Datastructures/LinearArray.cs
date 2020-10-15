@@ -84,12 +84,20 @@ namespace DatastructuresLinearArray
         {
             Polynomial result = new Polynomial();
 
-            for (int i = 0; i < p.count; i++)
-                result.AddTerm(new Datastructures.Term(p.P[i].Coefficient, p.P[i].Exponent));
-            for (int i = 0; i < q.count; i++)
-                result.AddTerm(new Datastructures.Term(q.P[i].Coefficient, q.P[i].Exponent));
-            
-            return result;
+            if(p.count == 0 || q.count == 0)
+            {
+                throw new ArgumentException("Please enter non-null polynomials");
+            }
+
+            else
+            {
+                for (int i = 0; i < p.count; i++)
+                    result.AddTerm(new Datastructures.Term(p.P[i].Coefficient, p.P[i].Exponent));
+                for (int i = 0; i < q.count; i++)
+                    result.AddTerm(new Datastructures.Term(q.P[i].Coefficient, q.P[i].Exponent));
+
+                return result;
+            }
         }
 
 
@@ -98,16 +106,23 @@ namespace DatastructuresLinearArray
         {
             Polynomial result = new Polynomial();
 
-            for(int i = 0; i < p.count; i++)
+            if (p.count == 0 || q.count == 0)
             {
-                for(int j = 0; j < q.count; j++)
-                {
-                    result.AddTerm(new Term(p.P[i].Coefficient * q.P[j].Coefficient,
-                        p.P[i].Exponent + q.P[j].Exponent));
-                }
+                throw new ArgumentException("Please enter non-null polynomials");
             }
-
-            return result;
+            else
+            {
+                for (int i = 0; i < p.count; i++)
+                {
+                    for (int j = 0; j < q.count; j++)
+                    {
+                        result.AddTerm(new Term(p.P[i].Coefficient * q.P[j].Coefficient,
+                            p.P[i].Exponent + q.P[j].Exponent));
+                    }
+                }
+                return result;
+            }
+            
         }
 
         //Evaluates the current polynomial at x
@@ -115,6 +130,10 @@ namespace DatastructuresLinearArray
         {
             double value = 0;
 
+            if(this.count == 0)
+            {
+                throw new InvalidOperationException("The polynomial is empty");
+            }
             for(int i = 0; i < this.count; i++)
             {
                 value += this.P[i].Evaluate(x);
@@ -126,13 +145,20 @@ namespace DatastructuresLinearArray
         //Prints the current polynomial
         public void Print()
         {
-            for(int i=0;i<this.count;i++)
+            if(count == 0)
             {
-                Console.Write(P[i]);
+                Console.Write("null");
+            }
+            else
+            {
+                for (int i = 0; i < this.count; i++)
+                {
+                    Console.Write(P[i]);
 
-                if (P[i+1] != null)
-                    Console.Write(" + ");
+                    if (P[i + 1] != null)
+                        Console.Write(" + ");
 
+                }
             }
         }
 
