@@ -53,6 +53,7 @@
     <Compile Include="Datastructures\Term.cs" />
     <Compile Include="Test\LinkedListTest.cs" />
     <Compile Include="Datastructures\Polynomials.cs" />
+    <Compile Include="Test\TermTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

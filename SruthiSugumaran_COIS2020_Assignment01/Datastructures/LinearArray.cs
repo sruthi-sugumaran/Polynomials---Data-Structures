@@ -15,23 +15,23 @@ namespace DatastructuresLinearArray
         //keep track of number of terms present in Polynomial
         private int count;
 
-        //constructor to create an empty polynomial 
+        //Constructor to create an empty polynomial 
         public Polynomial()
         {
             P = new Term[100];
             this.count = 0;
         }
 
-        //Adding a new term to the polynomial
+        //Inserts term t into the current polynomial in its proper order
         public void AddTerm(Term t)
         {
-            if (count == 0)
+            if (count == 0)                                     //Adds term as the first term when polynomial is empty
             {
                 P[0] = t;
                 count++;
             }
 
-            else
+            else                                                //Iterate through the linked list and place the term in proper order
             {
                 int indx=count-1;
                 Boolean bigger = false;
@@ -84,7 +84,8 @@ namespace DatastructuresLinearArray
         {
             Polynomial result = new Polynomial();
 
-            if(p.count == 0 || q.count == 0)
+            //Throws exception when p and/or q are empty polynomials
+            if (p.count == 0 || q.count == 0)
             {
                 throw new ArgumentException("Please enter non-null polynomials");
             }
@@ -106,10 +107,12 @@ namespace DatastructuresLinearArray
         {
             Polynomial result = new Polynomial();
 
+            //Throws exception when p and/or q are empty polynomials
             if (p.count == 0 || q.count == 0)
             {
                 throw new ArgumentException("Please enter non-null polynomials");
             }
+
             else
             {
                 for (int i = 0; i < p.count; i++)
@@ -130,7 +133,8 @@ namespace DatastructuresLinearArray
         {
             double value = 0;
 
-            if(this.count == 0)
+            //Throws exception when polynomial is empty polynomials
+            if (this.count == 0)
             {
                 throw new InvalidOperationException("The polynomial is empty");
             }
@@ -145,6 +149,7 @@ namespace DatastructuresLinearArray
         //Prints the current polynomial
         public void Print()
         {
+            //Prints null when polynomial is empty
             if(count == 0)
             {
                 Console.Write("null");

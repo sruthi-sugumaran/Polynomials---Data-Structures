@@ -7,6 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+//Group Members
+//----------------------------
+//Sruthi Sugumaran - 0690271
+//Shushmitha Das - 0607436
+//Farhad
+
 namespace Datastructures
 {
     class Program
@@ -18,6 +24,7 @@ namespace Datastructures
         Start:
             int key = 0;
 
+            //Display a menu for user to choose
             do
             {
 
@@ -33,6 +40,7 @@ namespace Datastructures
                 Console.Write("\nEnter option(1-6): \t");
                 key = Convert.ToInt32(Console.ReadLine());
 
+                //Calls corresponding function for each menu option
                 switch (key)
                 {
                     case 1:
@@ -368,6 +376,7 @@ namespace Datastructures
     }
 }
 
+//Tests
 
 //DatastructuresLinkedList.PolynomialLinkedListTest.TestAddTerm();
 //DatastructuresLinkedList.PolynomialLinkedListTest.TestEvaluate();
@@ -386,4 +395,8 @@ namespace Datastructures
 //DatastructuresPolynomials.PolynomialsTest.TestDelete();
 //DatastructuresPolynomials.PolynomialsTest.TestSize();
 //DatastructuresPolynomials.PolynomialsTest.TestPrint();
+
+//Datastructures.TermTest.TestTerm();
+//Datastructures.TermTest.TestEvaluate();
+//Datastructures.TermTest.TestCompareTo();
 

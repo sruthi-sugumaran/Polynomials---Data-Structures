@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datastructures;
 
 namespace DatastructuresLinkedList
 {
     public class Polynomial
     {
         //A reference to the first node of a singly linked list
-        private Datastructures.Node<Datastructures.Term> front;
-        public Datastructures.Node<Datastructures.Term> Front
+        private Node<Datastructures.Term> front;
+        
+        //Property for front
+        public Node<Datastructures.Term> Front
         {
             get { return this.front; }
         }
@@ -26,13 +27,14 @@ namespace DatastructuresLinkedList
         //If a term with the same exponent already exists then the two terms are added together
         public void AddTerm(Datastructures.Term t)
         {
-            Datastructures.Node<Datastructures.Term> toAdd = new Datastructures.Node<Datastructures.Term>(t, null);
-            Datastructures.Node<Datastructures.Term> current = this.front;
-            if (front == null)
+            Node<Datastructures.Term> toAdd = new Node<Datastructures.Term>(t, null);
+            Node<Datastructures.Term> current = this.front;
+
+            if (front == null)                                              //If the polynomial is empty
             {
                 this.front = toAdd;
             }
-            else if (front.Item.Exponent < toAdd.Item.Exponent)
+            else if (front.Item.Exponent < toAdd.Item.Exponent)             //If the new term's exponent is greater than the exponent in fron
             {
                 toAdd.Next = front;
                 this.front = toAdd;
@@ -41,7 +43,7 @@ namespace DatastructuresLinkedList
             {
                 int flag = 0;
 
-                while (current != null)
+                while (current != null)                                     //Iterate through the linked list and place the term in proper order
                 {
                     if (current.Item.Exponent == toAdd.Item.Exponent)
                     {
@@ -66,7 +68,6 @@ namespace DatastructuresLinkedList
                 if (flag == 0)
                     current.Next = toAdd;
             }
-            //Note to Sruthi: Implement linked list tranversal
         }
 
         //Adds polynomials p and q to yield a new polynomial
@@ -74,9 +75,10 @@ namespace DatastructuresLinkedList
         {
             Polynomial result = new Polynomial();
 
-            Datastructures.Node<Datastructures.Term> currentP = p.front;
-            Datastructures.Node<Datastructures.Term> currentQ = q.front;
+            Node<Datastructures.Term> currentP = p.front;
+            Node<Datastructures.Term> currentQ = q.front;
 
+            //Throws exception when p and/or q are empty polynomials
             if (p.front == null || q.front == null)
             {
                 throw new ArgumentException("Please enter non-null polynomials");
@@ -100,9 +102,10 @@ namespace DatastructuresLinkedList
         public static Polynomial operator *(Polynomial p, Polynomial q)
         {
             Polynomial result = new Polynomial();
-            Datastructures.Node<Datastructures.Term> currentP = p.front;
-            Datastructures.Node<Datastructures.Term> currentQ = q.front;
+            Node<Datastructures.Term> currentP = p.front;
+            Node<Datastructures.Term> currentQ = q.front;
 
+            //Throws exception when p and/or q are empty polynomials
             if (p.front == null || q.front == null)
             {
                 throw new ArgumentException("Please enter non-null polynomials");
@@ -126,9 +129,10 @@ namespace DatastructuresLinkedList
         //Evaluates the current polynomial at x
         public double Evaluate(double x)
         {
-            Datastructures.Node<Datastructures.Term> current = this.front;
+            Node<Datastructures.Term> current = this.front;
             double value = 0;
 
+            //Throws exception when polynomial is empty
             if (this.front == null)
             {
                 throw new InvalidOperationException("Please enter non-null polynomials");
@@ -145,7 +149,7 @@ namespace DatastructuresLinkedList
         //Prints the current polynomial
         public void Print()
         {
-            Datastructures.Node<Datastructures.Term> current = this.front;
+            Node<Datastructures.Term> current = this.front;
             while (current != null)
             {
                 Console.Write(current.Item);
@@ -156,6 +160,7 @@ namespace DatastructuresLinkedList
                 current = current.Next;
             }
 
+            //Prints null if polynomial is empty
             if(this.front==null)
             {
                 Console.Write("null");
