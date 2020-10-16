@@ -22,7 +22,7 @@ namespace Datastructures
             DatastructuresPolynomials.Polynomials S = new DatastructuresPolynomials.Polynomials();
 
         Start:
-            int key = 0;
+            int choice = 0;
 
             //Display a menu for user to choose
             do
@@ -38,10 +38,10 @@ namespace Datastructures
                 Console.WriteLine("6. Exit");
 
                 Console.Write("\nEnter option(1-6): \t");
-                key = Convert.ToInt32(Console.ReadLine());
+                choice = Convert.ToInt32(Console.ReadLine());
 
                 //Calls corresponding function for each menu option
-                switch (key)
+                switch (choice)
                 {
                     case 1:
                         PolynomialInsert(S);
@@ -61,11 +61,11 @@ namespace Datastructures
                     case 6:
                         break;
                     default:
-                        Console.WriteLine("Invalid key!\n\n");
+                        Console.WriteLine("Invalid choice!\n\n");
                         goto Start;
 
                 }
-            } while (key != 6);
+            } while (choice != 6);
         }
 
         public static void PolynomialInsert(DatastructuresPolynomials.Polynomials S)
@@ -145,8 +145,8 @@ namespace Datastructures
         }
         public static void AddPolynomial(DatastructuresPolynomials.Polynomials S)
         {
-            int keyP;
-            int keyQ;
+            int indexP;
+            int indexQ;
 
             Console.Clear();
             Console.WriteLine("Add two polynomials from S and insert the resultant polynomial into S");
@@ -159,7 +159,7 @@ namespace Datastructures
             else
             {
                 Console.WriteLine("Polynomials in List S:\n");
-                Console.WriteLine("{0,8}{1,30}", "Key", "Polynomial");
+                Console.WriteLine("{0,8}{1,30}", "Index", "Polynomial");
                 Console.WriteLine("-----------------------------------------------------------------------------");
                 for (int i = 0; i < S.Size(); i++)
                 {
@@ -168,33 +168,33 @@ namespace Datastructures
                     Console.WriteLine();
                 }
                 Console.WriteLine("-----------------------------------------------------------------------------");
-                Console.Write("Enter key corresponding to p:\t");
-                keyP = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter key corresponding to q:\t");
-                keyQ = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter index corresponding to p:\t");
+                indexP = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter index corresponding to q:\t");
+                indexQ = Convert.ToInt32(Console.ReadLine());
 
                 try
                 {
                     Console.WriteLine($"\nAdding terms p and q:");
                     Console.Write("p:\t");
-                    S.Retrieve(keyP).Print();
+                    S.Retrieve(indexP).Print();
                     Console.Write("\nq:\t");
-                    S.Retrieve(keyQ).Print();
+                    S.Retrieve(indexQ).Print();
 
                     DatastructuresLinkedList.Polynomial sum = new DatastructuresLinkedList.Polynomial();
-                    sum = S.Retrieve(keyP) + S.Retrieve(keyQ);
+                    sum = S.Retrieve(indexP) + S.Retrieve(indexQ);
                     Console.Write("\np + q: \t");
                     sum.Print();
 
                     Console.WriteLine("\n\nInserting p + q into list S");
-                    S.Insert(S.Retrieve(keyP) + S.Retrieve(keyQ));
+                    S.Insert(S.Retrieve(indexP) + S.Retrieve(indexQ));
                     Console.WriteLine("List S:");
                     S.Print();
                 }
                 catch(Exception e)
                 {
                     Console.WriteLine("\n" + e.Message);
-                    Console.WriteLine("Key entered does not exist");
+                    Console.WriteLine("Index entered does not exist");
                     Console.WriteLine("----------------------------------------------");
                 }
                 
@@ -206,8 +206,8 @@ namespace Datastructures
         }
         public static void MultiplyPolynomial(DatastructuresPolynomials.Polynomials S)
         {
-            int keyP;
-            int keyQ;
+            int indexP;
+            int indexQ;
 
             Console.Clear();
             Console.WriteLine("Multiply two polynomials from S and insert the resultant polynomial into S");
@@ -220,7 +220,7 @@ namespace Datastructures
             else
             {
                 Console.WriteLine("Polynomials in List S:\n");
-                Console.WriteLine("{0,8}{1,30}", "Key", "Polynomial");
+                Console.WriteLine("{0,8}{1,30}", "Index", "Polynomial");
                 Console.WriteLine("-----------------------------------------------------------------------------");
                 for (int i = 0; i < S.Size(); i++)
                 {
@@ -229,33 +229,33 @@ namespace Datastructures
                     Console.WriteLine();
                 }
                 Console.WriteLine("-----------------------------------------------------------------------------");
-                Console.Write("Enter key corresponding to p:\t");
-                keyP = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter key corresponding to q:\t");
-                keyQ = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter index corresponding to p:\t");
+                indexP = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter index corresponding to q:\t");
+                indexQ = Convert.ToInt32(Console.ReadLine());
                 
                 try
                 {
                     Console.WriteLine($"\nMultiplying terms p and q:");
                     Console.Write("p:\t");
-                    S.Retrieve(keyP).Print();
+                    S.Retrieve(indexP).Print();
                     Console.Write("\nq:\t");
-                    S.Retrieve(keyQ).Print();
+                    S.Retrieve(indexQ).Print();
 
                     DatastructuresLinkedList.Polynomial product = new DatastructuresLinkedList.Polynomial();
-                    product = S.Retrieve(keyP) * S.Retrieve(keyQ);
+                    product = S.Retrieve(indexP) * S.Retrieve(indexQ);
                     Console.Write("\np * q: \t");
                     product.Print();
 
                     Console.WriteLine("\n\nInserting p * q into list S");
-                    S.Insert(S.Retrieve(keyP) * S.Retrieve(keyQ));
+                    S.Insert(S.Retrieve(indexP) * S.Retrieve(indexQ));
                     Console.WriteLine("List S:");
                     S.Print();
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("\n" + e.Message);
-                    Console.WriteLine("Key entered does not exist");
+                    Console.WriteLine("Index entered does not exist");
                     Console.WriteLine("----------------------------------------------");
                 }
             }
@@ -266,7 +266,7 @@ namespace Datastructures
         }
         public static void DeletePolynomial(DatastructuresPolynomials.Polynomials S)
         {
-            int key;
+            int index;
 
             Console.Clear();
             Console.WriteLine("Delete the polynomial from S at a given index");
@@ -288,22 +288,22 @@ namespace Datastructures
                     Console.WriteLine();
                 }
                 Console.WriteLine("-----------------------------------------------------------------------------");
-                Console.Write("Enter key corresponding to the polynomial to be deleted:\t");
-                key = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter index corresponding to the polynomial to be deleted:\t");
+                index = Convert.ToInt32(Console.ReadLine());
 
                 try
                 {
                     Console.WriteLine("\n\nDeleting polynomial from list S");
                     Console.Write("\nPolynomial to be deleted:\t");
-                    S.Retrieve(key).Print();
-                    S.Delete(key);
+                    S.Retrieve(index).Print();
+                    S.Delete(index);
                     Console.WriteLine("\n\nList S:");
                     S.Print();
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("\n" + e.Message);
-                    Console.WriteLine("Key entered does not exist");
+                    Console.WriteLine("Index entered does not exist");
                     Console.WriteLine("----------------------------------------------");
                 }
             }
@@ -314,7 +314,7 @@ namespace Datastructures
         }
         public static void EvaluatePolynomial(DatastructuresPolynomials.Polynomials S)
         {
-            int key;
+            int index;
             double x;
             double result;
 
@@ -341,17 +341,17 @@ namespace Datastructures
              
                 try
                 {
-                    Console.Write("Enter key corresponding to the polynomial to be evaluated:\t");
-                    key = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Enter index corresponding to the polynomial to be evaluated:\t");
+                    index = Convert.ToInt32(Console.ReadLine());
                     Console.Write("\nEnter the value of x:\t");
                     x = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("\n\nEvaluating polynomial from list S:");
                     Console.WriteLine("-----------------------------------------------------------------------------");
                     Console.Write("\nPolynomial to be evaluated:\t");
-                    S.Retrieve(key).Print();
+                    S.Retrieve(index).Print();
                     Console.WriteLine($"\nx = {x}");
-                    result = S.Retrieve(key).Evaluate(x);
+                    result = S.Retrieve(index).Evaluate(x);
                     Console.WriteLine($"Result: {result}");
                 }
                 catch(FormatException f)
@@ -363,7 +363,7 @@ namespace Datastructures
                 catch (Exception e)
                 {
                     Console.WriteLine("\n" + e.Message);
-                    Console.WriteLine("Key entered does not exist");
+                    Console.WriteLine("Index entered does not exist");
                     Console.WriteLine("----------------------------------------------");
                 }
                 
