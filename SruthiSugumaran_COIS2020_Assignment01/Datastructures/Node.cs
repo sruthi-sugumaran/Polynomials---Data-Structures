@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datastructures
+namespace DatastructuresLinkedList
 {
     public class Node<T>
     {
